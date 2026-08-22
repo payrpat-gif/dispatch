@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nanum+Pen+Script&display=swap');
+
+:root {
+  --ink: #172d25;
+  --green: #284638;
+  --moss: #737a49;
+  --cream: #f9f0df;
+  --paper: #fcf7ec;
+  --tomato: #b53f31;
+  --berry: #742938;
+  --gold: #c5a35e;
+  --line: rgba(23, 45, 37, .22);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'DM Sans', Arial, sans-serif; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+.skip-link { position: fixed; z-index: 100; left: 1rem; top: -4rem; padding: .75rem 1rem; background: var(--paper); }
+.skip-link:focus { top: 1rem; }
+
+.hero { min-height: 780px; padding: 1.5rem clamp(1.25rem, 4vw, 4rem) 2.5rem; background: #263a31 url('PP%20August%20Dispatch%20(3).png') center / 650px repeat; overflow: hidden; }
+.nav { position: relative; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 1320px; margin: auto; }
+.wordmark { width: min(290px, 54vw); }
+.wordmark img { width: 100%; height: auto; }
+.nav-link, .button { display: inline-flex; align-items: center; gap: .6rem; border: 1px solid currentColor; padding: .75rem 1rem; text-decoration: none; font: 500 .72rem/1 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; }
+.nav-link { color: var(--cream); }
+.nav-link:hover, .button-dark:hover { background: var(--cream); color: var(--ink); }
+
+.hero-collage { position: relative; width: min(1190px, 100%); min-height: 690px; margin: 1rem auto 0; }
+.hero-book { position: absolute; z-index: 2; top: 22%; left: 50%; width: min(600px, 59vw); min-height: 380px; transform: translateX(-50%); padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 5rem); text-align: center; background: linear-gradient(90deg, #fcfaf0 0 49.4%, #efede3 50.2% 100%); box-shadow: 0 15px 30px rgba(0, 0, 0, .24); }
+.hero-book::after { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; content: ''; background: rgba(68, 60, 43, .12); box-shadow: 7px 0 8px rgba(0,0,0,.04); }
+.eyebrow { margin: 0 0 .8rem; font: 500 .7rem/1.2 'DM Mono', monospace; letter-spacing: .13em; text-transform: uppercase; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { position: relative; z-index: 1; margin: 0; font: 600 clamp(2.7rem, 6vw, 5rem)/.95 'Fraunces', Georgia, serif; }
+h1 span { display: block; color: var(--tomato); font-size: .74em; font-weight: 700; letter-spacing: -.08em; text-shadow: 2px 2px #ead8b8; }
+.hero-copy { position: relative; z-index: 1; max-width: 300px; margin: 1.25rem auto 1.5rem; font-size: .95rem; line-height: 1.45; }
+.button-dark { position: relative; z-index: 1; background: var(--ink); color: var(--cream); }
+.hero-card, .hero-glasses, .hero-stamp, .hero-charm, .hero-tag, .hero-crossword, .now-playing { position: absolute; z-index: 3; mix-blend-mode: multiply; }
+.hero-card { width: 250px; left: -4%; top: 25%; transform: rotate(-14deg); }
+.hero-glasses { width: 410px; top: 0; left: 6%; transform: rotate(-7deg); }
+.hero-stamp { width: 165px; top: 8%; right: 6%; }
+.hero-charm { width: 190px; top: 26%; right: 0; }
+.hero-tag { width: 250px; bottom: 8%; right: -2%; transform: rotate(15deg); }
+.hero-crossword { width: 180px; bottom: 1%; left: 2%; transform: rotate(9deg); }
+.now-playing { z-index: 4; bottom: 1%; left: 49%; width: 170px; display: flex; justify-content: space-around; align-items: center; padding: .65rem .9rem; transform: translateX(-50%) rotate(-1deg); background: #e8ded2; font-size: .75rem; }
+.now-playing strong { display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid var(--ink); border-radius: 50%; }
+
+.section { width: min(1160px, calc(100% - 2.5rem)); margin: auto; }
+.intro { display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 3rem; padding: 9rem 0 6rem; }
+h2 { margin-bottom: 0; font: 600 clamp(3rem, 6vw, 6rem)/.91 'Fraunces', Georgia, serif; letter-spacing: -.06em; }
+h2 em { color: var(--tomato); font-style: italic; font-weight: 500; }
+.intro-copy { max-width: 390px; margin: 0 0 .5rem; font: 500 1.15rem/1.55 'Fraunces', Georgia, serif; }
+
+.dispatch-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 250px; gap: 1.1rem; padding-bottom: 8rem; }
+.dispatch-card { position: relative; display: flex; overflow: hidden; padding: 1.5rem; color: var(--cream); background: var(--green); isolation: isolate; }
+.dispatch-card::before { position: absolute; z-index: -1; inset: 0; content: ''; opacity: .24; background: url('PP%20August%20Dispatch%20(3).png') center / 350px repeat; mix-blend-mode: multiply; }
+.card-body { align-self: flex-end; max-width: 275px; }
+.card-number { position: absolute; top: 1.25rem; right: 1.5rem; font: .68rem 'DM Mono', monospace; }
+.dispatch-card .eyebrow { margin-bottom: .5rem; color: #e8d7ae; }
+.dispatch-card h3 { margin-bottom: .65rem; font: 600 clamp(2rem, 3.2vw, 3.35rem)/.88 'Fraunces', Georgia, serif; letter-spacing: -.06em; }
+.dispatch-card p:not(.eyebrow) { max-width: 240px; margin-bottom: 1.1rem; font-size: .84rem; line-height: 1.4; }
+.dispatch-card a { font: .68rem 'DM Mono', monospace; letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+.dispatch-card a:hover { text-decoration: underline; text-underline-offset: .35rem; }
+.card-eats { grid-column: span 7; grid-row: span 2; background: var(--berry); }
+.card-media { grid-column: span 5; background: #c76444; }
+.card-music { grid-column: span 5; background: #7e854b; }
+.card-moments { grid-column: span 7; background: #27433b; }
+.card-places { grid-column: 4 / span 6; background: #b28e51; }
+.fries { position: absolute; right: 5%; bottom: -2%; z-index: -1; font-size: clamp(8rem, 15vw, 13rem); filter: saturate(.8) sepia(.15); transform: rotate(10deg); }
+.television { position: absolute; right: 8%; bottom: 1rem; width: 150px; height: 112px; padding: 22px 10px; border: 8px solid #302c27; border-radius: 15px; background: #f9e8cb; color: var(--ink); text-align: center; box-shadow: inset 0 0 0 4px #b69972; font: 1.5rem/1 'Nanum Pen Script', cursive; transform: rotate(-4deg); }
+.music-notes { position: absolute; right: 8%; bottom: -1rem; color: #f7dc91; font: 7rem/.5 Georgia, serif; transform: rotate(12deg); }
+.film { position: absolute; right: 7%; bottom: 1rem; display: flex; gap: .35rem; align-items: center; transform: rotate(-14deg); }
+.film i { display: block; width: 42px; height: 54px; border: 3px solid #e8d8b7; background: rgba(232,216,183,.25); }
+.film b { position: absolute; right: -1rem; bottom: -1.6rem; color: var(--cream); font: 2.3rem 'Nanum Pen Script', cursive; }
+.pin { position: absolute; right: 13%; bottom: 8%; color: #e7d199; font-size: 8rem; }
+
+.note-section { display: grid; grid-template-columns: 1fr .85fr; align-items: center; gap: 5rem; padding: 1rem 0 9rem; }
+.paper-note { position: relative; min-height: 380px; padding: 4rem 15% 3rem; color: var(--ink); background: repeating-linear-gradient(to bottom, #fbecdc 0 37px, #879589 38px 39px); box-shadow: 10px 11px 0 var(--green); transform: rotate(-1.5deg); }
+.paper-note::before { position: absolute; top: 0; bottom: 0; left: 17%; width: 2px; content: ''; background: #ce7363; opacity: .65; }
+.scribble { color: var(--cream); margin: -2.8rem -6rem 2.7rem; padding: .6rem 1rem; background: var(--ink); text-align: center; font: 2.2rem 'Nanum Pen Script', cursive; }
+blockquote { position: relative; margin: 0 0 2.2rem; font: 600 clamp(1.5rem, 3vw, 2.3rem)/1.03 'Fraunces', Georgia, serif; }
+.paper-note > p:last-child { max-width: 290px; margin-bottom: 0; font-size: .86rem; line-height: 1.5; }
+.note-decoration { position: relative; min-height: 300px; }
+.note-decoration img { position: absolute; mix-blend-mode: multiply; }
+.note-decoration img:first-child { width: min(100%, 365px); right: 0; top: 0; transform: rotate(3deg); }
+.note-decoration img:last-child { width: 145px; bottom: 0; left: 4%; transform: rotate(-10deg); }
+
+.signup { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem, 9vw, 9rem); align-items: center; padding: 7rem clamp(1rem, 6vw, 6rem); background: var(--tomato); color: var(--cream); }
+.library-card { padding: 1.25rem; color: #2e382d; background: #ede5cd; box-shadow: 12px 13px 0 rgba(42, 25, 20, .22); transform: rotate(-3deg); }
+.library-title { margin: -1.25rem -1.25rem 1rem; padding: .65rem; border-bottom: 4px double currentColor; text-align: center; font: 600 1.35rem/1 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .05em; }
+.library-line { display: grid; grid-template-columns: 90px 1fr; min-height: 48px; padding: .5rem 0; border-bottom: 1px solid rgba(46,56,45,.55); }
+.library-line span { font: .58rem 'DM Mono', monospace; text-transform: uppercase; }
+.library-line strong { align-self: end; font: 1.25rem 'Nanum Pen Script', cursive; }
+.signup h2 { font-size: clamp(3.5rem, 6vw, 6.5rem); }
+.signup-copy > p:not(.eyebrow) { max-width: 330px; font: 1.2rem/1.35 'Fraunces', Georgia, serif; }
+.signup-form { display: flex; max-width: 430px; margin-top: 2rem; border-bottom: 1px solid currentColor; }
+.signup-form input { min-width: 0; flex: 1; border: 0; outline: 0; padding: .8rem 0; color: inherit; background: transparent; font: .75rem 'DM Mono', monospace; }
+.signup-form input::placeholder { color: rgba(255,255,255,.65); }
+.signup-form button { border: 0; color: inherit; background: transparent; font: 500 .68rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; cursor: pointer; }
+.signup small { display: block; margin-top: 1rem; font: .65rem 'DM Mono', monospace; letter-spacing: .04em; }
+
+footer { display: flex; width: min(1160px, calc(100% - 2.5rem)); margin: auto; padding: 1.5rem 0; align-items: center; justify-content: space-between; gap: 1rem; color: var(--ink); font: .66rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; }
+footer a { text-decoration: none; }
+.footer-wordmark { font: 700 1.25rem 'Fraunces', Georgia, serif; text-transform: none; letter-spacing: -.04em; }
+.footer-wordmark span { color: var(--tomato); font-style: italic; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  .hero { min-height: 680px; padding-inline: 1rem; }
+  .hero-collage { min-height: 600px; }
+  .hero-book { top: 19%; width: min(430px, 88vw); min-height: 340px; }
+  .hero-glasses { width: 240px; left: -6%; top: 5%; }
+  .hero-card { width: 165px; left: -14%; top: 35%; }
+  .hero-stamp { width: 110px; right: -4%; top: 10%; }
+  .hero-charm { width: 130px; right: -10%; top: 35%; }
+  .hero-tag { width: 145px; bottom: 4%; right: -10%; }
+  .hero-crossword { width: 110px; left: -6%; bottom: 5%; }
+  .now-playing { bottom: 0; }
+  .intro, .note-section, .signup { grid-template-columns: 1fr; }
+  .intro { gap: 1.5rem; padding: 5rem 0 4rem; }
+  .dispatch-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: .75rem; padding-bottom: 5rem; }
+  .dispatch-card, .card-eats, .card-media, .card-music, .card-moments, .card-places { grid-column: auto; grid-row: auto; min-height: 290px; }
+  .card-places { min-height: 260px; }
+  .note-section { gap: 3rem; padding-bottom: 5rem; }
+  .note-decoration { min-height: 240px; }
+  .signup { width: 100%; padding: 4rem 1.25rem; }
+  footer { flex-wrap: wrap; }
+}

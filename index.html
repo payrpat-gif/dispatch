@@ -15,7 +15,12 @@
 
       <section class="folder-stage" aria-labelledby="archive-title">
         <div class="desk-note" aria-hidden="true">open me<br /><span>↓</span></div>
-        <img class="glasses" src="PP%20August%20Dispatch%20(7).png" alt="" aria-hidden="true" />
+        <div class="desk-prop prop-glasses" aria-hidden="true"><img src="desk-glasses.png" alt="" /></div>
+        <div class="desk-prop prop-sudoku" aria-hidden="true"><img src="desk-sudoku.png" alt="" /></div>
+        <div class="desk-prop prop-card" aria-hidden="true"><img src="desk-card.png" alt="" /></div>
+        <div class="desk-prop prop-necklace" aria-hidden="true"><img src="desk-necklace.png" alt="" /></div>
+        <div class="desk-prop prop-stamp" aria-hidden="true"><img src="desk-stamp.png" alt="" /></div>
+        <div class="desk-prop prop-plate" aria-hidden="true"><img src="desk-plate.png" alt="" /></div>
 
         <article class="folder folder-about" aria-label="About folder, coming soon">
           <div class="folder-tab">About</div>
@@ -41,6 +46,7 @@
         <section class="report-shell" id="report" aria-label="August monthly report">
           <div class="report-spine" aria-hidden="true"></div>
           <div class="report">
+            <button class="close-file close-note" type="button">close me ↑</button>
             <header class="report-cover section-image image-month">
               <p class="section-number">section 01</p>
               <div class="cover-copy">
@@ -131,10 +137,18 @@
               </div>
             </section>
 
-            <footer class="report-footer">
-              <p>Filed under: August, good things, to be continued.</p>
-              <button class="close-file" type="button">Close file ↑</button>
-            </footer>
+            <footer class="report-footer"><p>Filed under: August, good things, to be continued.</p></footer>
+          </div>
+        </section>
+
+        <section class="about-shell" id="about-file" aria-label="About file">
+          <div class="about-file">
+            <button class="close-file close-note" type="button">close me ↑</button>
+            <div class="about-paper">
+              <p class="handwriting">Hi friends,</p>
+              <p class="about-placeholder">I’m still deciding on the words for this page, but I wanted to leave a little hello here while I gather them.</p>
+              <p class="signature">Sincerely, Payal</p>
+            </div>
           </div>
         </section>
       </section>
@@ -143,21 +157,46 @@
     <script>
       const stage = document.querySelector('.folder-stage');
       const openButton = document.querySelector('.open-file');
-      const closeButton = document.querySelector('.close-file');
+      const closeButtons = document.querySelectorAll('.close-file');
       const report = document.querySelector('#report');
+      const aboutFile = document.querySelector('#about-file');
+      const folders = document.querySelectorAll('.folder');
 
-      function setFolder(open) {
+      function rustle() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const audio = new AudioContext();
+        const buffer = audio.createBuffer(1, audio.sampleRate * .14, audio.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < data.length; i += 1) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+        const source = audio.createBufferSource();
+        const filter = audio.createBiquadFilter();
+        const gain = audio.createGain();
+        filter.type = 'bandpass'; filter.frequency.value = 1600; filter.Q.value = .6;
+        gain.gain.setValueAtTime(.0001, audio.currentTime);
+        gain.gain.exponentialRampToValueAtTime(.045, audio.currentTime + .015);
+        gain.gain.exponentialRampToValueAtTime(.0001, audio.currentTime + .14);
+        source.buffer = buffer; source.connect(filter); filter.connect(gain); gain.connect(audio.destination); source.start();
+        window.setTimeout(() => audio.close(), 250);
+      }
+
+      function setFolder(open, folderName = 'august') {
         stage.classList.toggle('is-open', open);
-        openButton.setAttribute('aria-expanded', String(open));
+        stage.classList.toggle('august-open', open && folderName === 'august');
+        stage.classList.toggle('about-open', open && folderName === 'about');
         if (open) {
-          window.setTimeout(() => report.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
+          rustle();
+          if ('vibrate' in navigator) navigator.vibrate([18, 10, 18]);
+          window.setTimeout(() => (folderName === 'about' ? aboutFile : report).scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
         } else {
+          rustle();
+          if ('vibrate' in navigator) navigator.vibrate(24);
           document.querySelector('#archive-title').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
 
-      openButton.addEventListener('click', () => setFolder(true));
-      closeButton.addEventListener('click', () => setFolder(false));
+      folders.forEach((folder) => folder.addEventListener('click', () => setFolder(true, folder.classList.contains('folder-about') ? 'about' : 'august')));
+      closeButtons.forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); setFolder(false); }));
     </script>
   </body>
 </html>

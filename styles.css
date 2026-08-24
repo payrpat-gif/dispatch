@@ -154,6 +154,26 @@ h2 em { color:var(--red); font-style:italic; font-weight:500; }
   .about-paper { width:95%; }
 }
 
+/* Physical interaction override: only the front face moves; the folder back and tab stay put. */
+.folder { transform-style:preserve-3d; }
+.folder-tab { z-index:7; }
+.folder-front { position:absolute; z-index:3; inset:0; transform-origin:center bottom; transform-style:preserve-3d; backface-visibility:hidden; transition:transform .78s cubic-bezier(.22,.72,.24,1),filter .78s ease; }
+.folder-front .folder-face { z-index:1; }
+.report-shell,.about-shell { position:relative; z-index:1; height:0; max-height:none; margin-top:0; overflow:visible; visibility:hidden; pointer-events:none; opacity:0; transform:none; transition:opacity .16s ease; }
+.report-shell .report,.about-shell .about-file { width:min(65vw,940px); margin:0 auto; }
+.august-open .folder-august,.about-open .folder-about { transform:none; filter:none; }
+.august-open .folder-august .folder-front,.about-open .folder-about .folder-front { transform:perspective(1200px) rotateX(-74deg); filter:brightness(.84); pointer-events:none; }
+.august-open .folder-about,.about-open .folder-august { transform:none; }
+.august-open .report-shell,.about-open .about-shell { z-index:1; height:auto; margin-top:calc(-1 * min(53vw, 650px)); visibility:visible; pointer-events:auto; opacity:1; }
+.august-open .about-shell,.about-open .report-shell { visibility:hidden; pointer-events:none; opacity:0; height:0; }
+
+@media (max-width:720px) {
+  .folder-front { transition-duration:.68s; }
+  .report-shell .report,.about-shell .about-file { width:92vw; }
+  .august-open .folder-august .folder-front,.about-open .folder-about .folder-front { transform:perspective(900px) rotateX(-66deg); }
+  .august-open .report-shell,.about-open .about-shell { margin-top:calc(-1 * 64vw); }
+}
+
 /* Second-pass archive direction: the supplied August wallpaper, life-size paper, and a bottom-hinged cover. */
 body { background: #7a7c37 url('August%20Site%20Background.png') center / 430px repeat; }
 .archive { padding-top:1.1rem; }
